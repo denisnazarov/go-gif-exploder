@@ -1,4 +1,4 @@
-# go-gif exploder
+# go-gif-exploder
 
 Takes a gif and writes it each frame as a jpeg.
 

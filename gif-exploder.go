@@ -18,10 +18,12 @@ func writeImage(img image.Image, filename string) {
 	workingDir, err := os.Getwd()
 	check(err)
 
-	output, err := os.Create(workingDir + "/" + filename + ".jpg")
+	f, err := os.Create(workingDir + "/" + filename + ".jpg")
 	check(err)
 
-	jpeg.Encode(output, img, nil)
+	defer f.Close()
+
+	jpeg.Encode(f, img, nil)
 }
 
 func main() {
@@ -29,6 +31,7 @@ func main() {
 
 	f, err := os.Open(fileName)
 	check(err)
+
 	defer f.Close()
 
 	decodedGIF, err := gif.DecodeAll(f)
