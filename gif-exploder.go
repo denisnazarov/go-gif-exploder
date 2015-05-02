@@ -23,7 +23,8 @@ func writeImage(img image.Image, filename string) {
 
 	defer f.Close()
 
-	jpeg.Encode(f, img, nil)
+	err = jpeg.Encode(f, img, nil)
+	check(err)
 }
 
 func main() {
